@@ -3,7 +3,7 @@
 <template>
   <div class="content-header-style">
     <h1>TODO</h1>
-    <img alt="moon" src="../../assets/icons/moon_icon.svg" width="45px" height="45px" />
+    <img alt="moon" height="45px" src="../../assets/icons/moon_icon.svg" width="45px" />
   </div>
 </template>
 
@@ -11,5 +11,6 @@
 .content-header-style {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 </style>
