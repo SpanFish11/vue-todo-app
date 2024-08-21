@@ -13,7 +13,10 @@ import AppCheckboxInput from '@/components/atoms/AppCheckboxInput.vue'
 <style scoped lang="scss">
 .add-todo {
   display: flex;
-  align-items: center;
-  padding: 15px 10px;
+  width: 600px;
+  background-color: #ffffff;
+  padding: 1em 1.5em 1em 1em;
+  border-radius: 0.4em;
+  margin-bottom: 1.5em;
 }
 </style>

@@ -6,10 +6,23 @@ import TodoActions from '@/components/molecules/TodoActions.vue'
 </script>
 
 <template>
-  <div>
+  <div class="content">
     <ContentHeader />
     <AddTodo />
     <TodoList />
     <TodoActions />
   </div>
 </template>
+
+<style scoped lang="scss">
+.content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  top: 10%;
+}
+</style>

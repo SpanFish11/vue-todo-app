@@ -1,28 +1,45 @@
 <script setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
 import AppButton from '@/components/atoms/AppButton.vue'
+import { useStore } from 'vuex'
 
-const filterButtons = ref([
-  { id: 1, title: 'All' },
-  { id: 2, title: 'Active' },
-  { id: 3, title: 'Completed' },
-])
+const store = useStore()
+
+const filters = computed(() => store.getters.getFilters)
+const remaining = computed(() => store.getters.undoneTodosCount)
+const clearCompleted = () => store.dispatch('clearCompleted')
+const changeVisibility = (visibility) => store.dispatch('changeVisibility', visibility)
+
+const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1)
 </script>
 
 <template>
   <div class="task-actions">
-    <span>5 items left</span>
-    <AppButton v-for="button in filterButtons" :key="button.id" :label="button.title" />
-    <AppButton label="Clear Completed" />
+    <span>{{ remaining }} items left</span>
+    <ul>
+      <AppButton
+        v-for="(val, key) in filters"
+        :key="key"
+        :label="capitalize(key)"
+        @click="changeVisibility(key)"
+        class="b"
+      />
+    </ul>
+    <AppButton label="Clear Completed" @click="clearCompleted" />
   </div>
 </template>
 
 <style scoped lang="scss">
 .task-actions {
   display: flex;
+  width: 600px;
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
   font-size: 14px;
+}
+
+.b {
+  margin: 5px;
 }
 </style>
