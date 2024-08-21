@@ -1,11 +1,12 @@
 <script setup>
 const props = defineProps({
-  label: { type: String, required: true },
+  label: { type: String, required: false, default: '' },
+  customClass: { type: Array, required: false },
 })
 </script>
 
 <template>
-  <button>
+  <button :class="[customClass]">
     {{ props.label }}
   </button>
 </template>

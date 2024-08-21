@@ -1,28 +1,28 @@
 <script setup>
 import ContentHeader from '@/components/molecules/ContentHeader.vue'
 import AddTodo from '@/components/molecules/AddTodo.vue'
-import TodoList from '@/components/organisms/TodoList.vue'
-import TodoActions from '@/components/molecules/TodoActions.vue'
+import TodoCard from '@/components/organisms/TodoCard.vue'
 </script>
 
 <template>
-  <div class="content">
+  <div class="container">
     <ContentHeader />
     <AddTodo />
-    <TodoList />
-    <TodoActions />
+    <TodoCard />
   </div>
 </template>
 
 <style scoped lang="scss">
-.content {
-  text-align: center;
-  display: flex;
+.container {
+  position: relative;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  width: 100%;
-  height: 40%;
-  top: 10%;
+  width: 550px;
+  padding-top: 7%;
+}
+
+.card {
+  border-color: #e8e8e8;
+  font-family: 'Open Sans', cursive, sans-serif;
 }
 </style>

@@ -13,41 +13,63 @@ const toggleTodo = (todo) => store.dispatch('toggleTodo', todo)
 </script>
 
 <template>
-  <div class="todo-item">
-    <AppCheckboxInput :checked="props.todo.completed" @change="toggleTodo(todo)" />
-    <div>
-      <span
-        :class="{
+  <div class="list-group-item d-flex align-items-center">
+    <AppCheckboxInput class="ms-2" :checked="props.todo.completed" @change="toggleTodo(todo)" />
+    <span
+      :class="[
+        {
           'todo-item-completed': props.todo.completed,
-        }"
-        >{{ props.todo.title }}</span
-      >
-      <AppButton :class="['button', 'item__button--delete']" label="X" @click="removeTodo(props.todo)" />
-    </div>
+        },
+        'ms-4',
+        'custom-span',
+      ]"
+      @click="toggleTodo(todo)"
+      >{{ props.todo.title }}</span
+    >
+    <AppButton
+      :customClass="['button', 'item__button--delete', 'btn-close', 'ms-auto']"
+      @click="removeTodo(props.todo)"
+    />
   </div>
 </template>
 
 <style scoped lang="scss">
-.todo-item {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  padding: 15px 10px;
-  border-bottom: 1px solid #eee;
+.list-group-item {
+  padding: 15px;
+  color: #505050;
+
+  .btn-close {
+    &:focus {
+      cursor: pointer;
+      border: none;
+      box-shadow: none;
+    }
+  }
 
   .button {
-    visibility: hidden;
+    display: none;
+
+    &:active {
+      border: none;
+    }
   }
 
   &:hover {
     .item__button--delete {
-      visibility: visible;
+      display: block;
     }
+  }
+  .item__button--delete {
+    visibility: visible;
   }
 }
 
 .todo-item-completed {
   text-decoration-line: line-through;
-  color: #808080;
+  color: #c2c2c2;
+}
+
+span.custom-span {
+  cursor: pointer;
 }
 </style>
