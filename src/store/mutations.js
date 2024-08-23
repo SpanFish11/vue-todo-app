@@ -24,7 +24,7 @@ export const mutations = {
     }
   },
 
-  changeVisibility(state, filter) {
-    state.visibility = filter
+  changeActiveFilter(state, filter) {
+    state.activeFilter = filter
   },
 }

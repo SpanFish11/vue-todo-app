@@ -2,44 +2,79 @@
 import { computed } from 'vue'
 import AppButton from '@/components/atoms/AppButton.vue'
 import { useStore } from 'vuex'
+import { FILTER_LABELS, FILTERS } from '@/constants/constants'
 
 const store = useStore()
 
-const filters = computed(() => store.getters.getFilters)
 const remaining = computed(() => store.getters.undoneTodosCount)
+const activeFilter = computed(() => store.getters.getActiveFilter)
 const clearCompleted = () => store.dispatch('clearCompleted')
-const changeVisibility = (visibility) => store.dispatch('changeVisibility', visibility)
+const changeActiveFilter = (filter) => store.dispatch('changeActiveFilter', filter)
 
-const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1)
+const remainingText = computed(() => {
+  const value = remaining.value
+
+  switch (value) {
+    case 0:
+      return 'No items left'
+    case 1:
+      return '1 item left'
+    default:
+      return value + ' items left'
+  }
+})
 </script>
 
 <template>
-  <div class="task-actions">
-    <span>{{ remaining }} items left</span>
-    <ul>
-      <AppButton
-        v-for="(val, key) in filters"
-        :key="key"
-        :label="capitalize(key)"
-        @click="changeVisibility(key)"
-        class="b"
-      />
-    </ul>
-    <AppButton label="Clear Completed" @click="clearCompleted" />
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="remaining">{{ remainingText }}</span>
+      <div>
+        <AppButton
+          v-for="filter in FILTERS"
+          :key="filter"
+          :customClass="[
+            'btn-sm',
+            'me-2',
+            {
+              active: activeFilter === filter,
+            },
+          ]"
+          :label="FILTER_LABELS[filter]"
+          @click="changeActiveFilter(filter)"
+        />
+      </div>
+      <AppButton label="Clear Completed" :customClass="['btn-sm']" @click="clearCompleted" />
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.task-actions {
-  display: flex;
-  width: 600px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  font-size: 14px;
+.btn-sm {
+  border: none;
+  font-weight: 600;
+  background: none;
+  font-size: 15px;
+  color: #a6a6a6;
+
+  &:hover {
+    color: black;
+  }
 }
 
-.b {
-  margin: 5px;
+.active {
+  color: #4b7fe0;
+}
+
+.remaining {
+  font-size: 12px;
+  font-weight: 600;
+  color: #a6a6a6;
+}
+
+.card-body {
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 </style>

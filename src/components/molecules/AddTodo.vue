@@ -4,19 +4,35 @@ import AppCheckboxInput from '@/components/atoms/AppCheckboxInput.vue'
 </script>
 
 <template>
-  <div class="add-todo">
-    <AppCheckboxInput disabled />
-    <AppTextInput />
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="input-group">
+        <div class="input-group-text">
+          <AppCheckboxInput disabled />
+        </div>
+        <AppTextInput class="form-control" />
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.add-todo {
-  display: flex;
-  width: 600px;
-  background-color: #ffffff;
-  padding: 1em 1.5em 1em 1em;
-  border-radius: 0.4em;
-  margin-bottom: 1.5em;
+.card-body {
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.form-control {
+  border: none;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.input-group-text {
+  border: none;
+  background-color: white;
+  padding-left: 0;
 }
 </style>

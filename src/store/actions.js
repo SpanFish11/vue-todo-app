@@ -7,8 +7,8 @@ export default {
     })
   },
 
-  changeVisibility({ commit }, filter) {
-    commit('changeVisibility', filter)
+  changeActiveFilter({ commit }, filter) {
+    commit('changeActiveFilter', filter)
   },
 
   removeTodo({ commit }, todo) {
