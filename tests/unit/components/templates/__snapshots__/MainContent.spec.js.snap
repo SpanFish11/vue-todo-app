@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given the MainContent component should render 1`] = `
+<div
+  class="container"
+>
+  <content-header-stub />
+  <add-todo-stub />
+  <todo-card-stub />
+</div>
+`;

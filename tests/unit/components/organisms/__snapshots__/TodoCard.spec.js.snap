@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given the TodoCard component should render 1`] = `
+<div
+  class="card shadow-lg"
+>
+  <todo-list-stub />
+  <todo-actions-stub />
+</div>
+`;

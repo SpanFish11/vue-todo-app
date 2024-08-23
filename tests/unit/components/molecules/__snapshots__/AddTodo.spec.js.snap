@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given the AddTodo component when it is rendered should match the snapshot 1`] = `
+<div
+  class="card mb-4"
+>
+  <div
+    class="card-body"
+  >
+    <div
+      class="input-group"
+    >
+      <div
+        class="input-group-text"
+      >
+        <app-checkbox-input-stub
+          checked="false"
+          disabled="true"
+        />
+      </div>
+      <app-text-input-stub
+        class="form-control"
+        maxlength="150"
+        modelvalue=""
+        placeholder="Add your todo"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given the AppButton component should render 1`] = `
+<button
+  class=""
+/>
+`;
+
+exports[`Given the AppButton component should render 2`] = `
+<button
+  class=""
+/>
+`;
+
+exports[`Given the AppButton component should render 3`] = `
+<button
+  class=""
+/>
+`;
+
+exports[`Given the AppButton component should render 4`] = `
+<button
+  class=""
+/>
+`;
