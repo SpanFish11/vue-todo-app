@@ -1,6 +1,23 @@
 <script setup>
 import AppTextInput from '@/components/atoms/AppTextInput.vue'
 import AppCheckboxInput from '@/components/atoms/AppCheckboxInput.vue'
+import { ref } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+const inputValue = ref('')
+
+const addTodo = (value) => store.dispatch('addTodo', { value })
+
+const doneEdit = () => {
+  const value = inputValue.value.trim()
+  if (value) {
+    addTodo(value)
+    inputValue.value = ''
+  }
+}
+
+const cancelEdit = () => (inputValue.value = '')
 </script>
 
 <template>
@@ -10,7 +27,14 @@ import AppCheckboxInput from '@/components/atoms/AppCheckboxInput.vue'
         <div class="input-group-text">
           <AppCheckboxInput disabled />
         </div>
-        <AppTextInput class="form-control" />
+        <AppTextInput
+          class="form-control"
+          v-model="inputValue"
+          placeholder="Add your todo"
+          :maxlength="150"
+          @onPressEnter="doneEdit"
+          @onPressEsc="cancelEdit"
+        />
       </div>
     </div>
   </div>

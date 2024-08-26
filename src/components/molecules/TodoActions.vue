@@ -41,10 +41,10 @@ const remainingText = computed(() => {
             },
           ]"
           :label="FILTER_LABELS[filter]"
-          @click="changeActiveFilter(filter)"
+          @onClickButton="changeActiveFilter(filter)"
         />
       </div>
-      <AppButton label="Clear Completed" :customClass="['btn-sm']" @click="clearCompleted" />
+      <AppButton label="Clear Completed" :customClass="['btn-sm']" @onClickButton="clearCompleted" />
     </div>
   </div>
 </template>
