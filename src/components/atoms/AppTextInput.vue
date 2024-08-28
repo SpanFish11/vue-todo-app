@@ -1,34 +1,21 @@
 <script setup>
-import { useStore } from 'vuex'
-import { ref } from 'vue'
-
 const props = defineProps({
-  placeholder: { type: String, required: false, default: 'Add your todo' },
+  placeholder: { type: String, required: true },
+  maxlength: { type: Number, required: false },
 })
 
-const store = useStore()
-const inputValue = ref('')
+const model = defineModel({ type: String, required: true })
 
-const addTodo = (value) => store.dispatch('addTodo', { value })
-
-const doneEdit = () => {
-  const value = inputValue.value.trim()
-  if (value) {
-    addTodo(value)
-    inputValue.value = ''
-  }
-}
-
-const cancelEdit = () => (inputValue.value = '')
+const emit = defineEmits(['onPressEnter', 'onPressEsc'])
 </script>
 
 <template>
   <input
-    v-model="inputValue"
+    v-model="model"
     type="text"
     :placeholder="props.placeholder"
-    @keyup.enter="doneEdit"
-    @keyup.esc="cancelEdit"
-    maxlength="150"
+    :maxlength="props.maxlength"
+    @keyup.enter="emit('onPressEnter')"
+    @keyup.esc="emit('onPressEsc')"
   />
 </template>

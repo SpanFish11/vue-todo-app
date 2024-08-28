@@ -8,13 +8,14 @@ const props = defineProps({
 })
 
 const store = useStore()
+
 const removeTodo = (todo) => store.dispatch('removeTodo', todo)
 const toggleTodo = (todo) => store.dispatch('toggleTodo', todo)
 </script>
 
 <template>
   <div class="list-group-item d-flex align-items-center">
-    <AppCheckboxInput class="ms-2" :checked="props.todo.completed" @change="toggleTodo(todo)" />
+    <AppCheckboxInput class="ms-2" :checked="props.todo.completed" @onChange="toggleTodo(todo)" />
     <span
       :class="[
         {
@@ -28,7 +29,7 @@ const toggleTodo = (todo) => store.dispatch('toggleTodo', todo)
     >
     <AppButton
       :customClass="['button', 'item__button--delete', 'btn-close', 'ms-auto']"
-      @click="removeTodo(props.todo)"
+      @onClickButton="removeTodo(props.todo)"
     />
   </div>
 </template>
@@ -59,6 +60,7 @@ const toggleTodo = (todo) => store.dispatch('toggleTodo', todo)
       display: block;
     }
   }
+
   .item__button--delete {
     visibility: visible;
   }

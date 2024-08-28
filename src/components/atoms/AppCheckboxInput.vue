@@ -3,10 +3,18 @@ const props = defineProps({
   disabled: { type: Boolean, required: false, default: false },
   checked: { type: Boolean, required: false, default: false },
 })
-</script>
 
+const emit = defineEmits(['onChange'])
+</script>
+`
 <template>
-  <input class="form-check-input" type="checkbox" :disabled="props.disabled" :checked="props.checked" />
+  <input
+    class="form-check-input"
+    type="checkbox"
+    :disabled="props.disabled"
+    :checked="props.checked"
+    @change="emit('onChange')"
+  />
 </template>
 
 <style scoped lang="scss">

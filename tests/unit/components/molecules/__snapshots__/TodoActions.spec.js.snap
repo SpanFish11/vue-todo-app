@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given the TodoActions component when it is rendered should match the snapshot 1`] = `
+<div
+  class="card-body"
+>
+  <div
+    class="d-flex justify-content-between align-items-center"
+  >
+    <span
+      class="remaining"
+    >
+      No items left
+    </span>
+    <div>
+      
+      <app-button-stub
+        customclass="btn-sm,me-2,[object Object]"
+        label="All"
+      />
+      <app-button-stub
+        customclass="btn-sm,me-2,[object Object]"
+        label="Active"
+      />
+      <app-button-stub
+        customclass="btn-sm,me-2,[object Object]"
+        label="Completed"
+      />
+      
+    </div>
+    <app-button-stub
+      customclass="btn-sm"
+      label="Clear Completed"
+    />
+  </div>
+</div>
+`;

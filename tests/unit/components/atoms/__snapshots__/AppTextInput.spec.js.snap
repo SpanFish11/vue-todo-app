@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given the AppTextInput component should render 1`] = `
+<input
+  type="text"
+/>
+`;
+
+exports[`Given the AppTextInput component should render 2`] = `
+<input
+  type="text"
+/>
+`;
